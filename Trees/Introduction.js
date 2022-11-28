@@ -16,8 +16,8 @@ class BinarySearchTree {
     insert(data){
         
         const newNode  = new Node(data);
-
-        if(this.root ==  null){
+        console.log(newNode);
+        if(this.root ===  null){
             this.root = newNode;
         }else{
             this.insertNode(this.root , newNode)
@@ -26,16 +26,16 @@ class BinarySearchTree {
 
     insertNode(node , newNode){
         if(newNode.data < node.data){
-            if(newNode.left == null){
+            if(newNode.left === null){
                 node.left = newNode
             }else{
-                this.insertNode(this.left ,  newNode);
+                this.insertNode(node.left ,  newNode);
             }
         }else{
             if(newNode.right === null){
                 node.right = newNode;
             }else{
-                this.insertNode(this.right , newNode)
+                this.insertNode(node.right , newNode)
             }
         }
     }
@@ -59,8 +59,10 @@ class BinarySearchTree {
             }
             if(node.left == null){
                 node = this.right;
+                return node;
             }else if( node.right == null){
                 node = this.left
+                return node;
             }
 
             let aux = this.findMinNode(node.right)
